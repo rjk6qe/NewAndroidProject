@@ -204,8 +204,8 @@ public class GhostGame extends Activity implements OnClickListener {
 				((GhostBoard)findViewById(R.id.the_canvas)).getSprite1YPos()) ;
 		
 		
-		sprite1.x = (int)event.getX();
-		sprite1.y = (int)event.getY();
+		sprite1.x = (int)event.getX() - (GhostBoard.bm1.getWidth() / 2);
+		sprite1.y = (int)event.getY() - (GhostBoard.bm1.getHeight() / 2);
 		
 		
 		((GhostBoard)findViewById(R.id.the_canvas)).setSprite1Position(sprite1.x, sprite1.y);
@@ -271,11 +271,11 @@ public class GhostGame extends Activity implements OnClickListener {
 			
 			((GhostBoard)findViewById(R.id.the_canvas)).setSprite1Position(sprite1.x, sprite1.y);
 					
-			
+			/**
 			++score;
 			
 			((TextView)findViewById(R.id.ScoreTotal)).setText(score/1000);
-			
+			**/
 			frame.removeCallbacks(frameUpdate);
 			((GhostBoard) findViewById(R.id.the_canvas)).invalidate();
 			frame.postDelayed(frameUpdate, FRAME_RATE);

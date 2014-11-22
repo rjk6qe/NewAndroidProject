@@ -45,11 +45,11 @@ public class MainActivity extends Activity {
 		title.setTypeface(titleFont);
 		// Instantiate all buttons
 		final Button startButton = (Button) findViewById(R.id.startButton);
-		final Button leaderboardButton = (Button) findViewById(R.id.leaderboardButton);
-		final Button settingsButton = (Button) findViewById(R.id.settingsButton);
+		//final Button leaderboardButton = (Button) findViewById(R.id.leaderboardButton);
+		//final Button settingsButton = (Button) findViewById(R.id.settingsButton);
 		startButton.setVisibility(View.GONE);
-		leaderboardButton.setVisibility(View.GONE);
-		settingsButton.setVisibility(View.GONE);
+		//leaderboardButton.setVisibility(View.GONE);
+		//settingsButton.setVisibility(View.GONE);
 		class fadeAnimator {
 			TextView tempText;
 			public String[] text = new String[] { "" };
@@ -128,12 +128,12 @@ public class MainActivity extends Activity {
 									tempText.setVisibility(View.GONE);
 								} else {
 									startButton.setTypeface(menuFont);
-									leaderboardButton.setTypeface(menuFont);
-									settingsButton.setTypeface(menuFont);
+									//leaderboardButton.setTypeface(menuFont);
+									//settingsButton.setTypeface(menuFont);
 									startButton.setVisibility(View.VISIBLE);
-									leaderboardButton
-											.setVisibility(View.VISIBLE);
-									settingsButton.setVisibility(View.VISIBLE);
+									//leaderboardButton
+										//	.setVisibility(View.VISIBLE);
+									//settingsButton.setVisibility(View.VISIBLE);
 								}
 							}
 						});
