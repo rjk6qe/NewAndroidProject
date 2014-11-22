@@ -30,17 +30,15 @@ public final class R {
     }
     public static final class id {
         public static final int GameOverText=0x7f080001;
-        public static final int ViewSwitcher=0x7f080003;
+        public static final int ScoreTotal=0x7f080002;
         public static final int ViewSwitcher2=0x7f080000;
-        public static final int action_settings=0x7f08000b;
-        public static final int button1=0x7f080008;
-        public static final int button2=0x7f080009;
-        public static final int button3=0x7f08000a;
-        public static final int imageView1=0x7f080007;
-        public static final int textView1=0x7f080004;
-        public static final int textView2=0x7f080006;
-        public static final int textView3=0x7f080005;
-        public static final int the_canvas=0x7f080002;
+        public static final int action_settings=0x7f080009;
+        public static final int leaderboardButton=0x7f080006;
+        public static final int settingsButton=0x7f080007;
+        public static final int startButton=0x7f080005;
+        public static final int textView2=0x7f080008;
+        public static final int textView_title=0x7f080004;
+        public static final int the_canvas=0x7f080003;
     }
     public static final class layout {
         public static final int activity_ghost_game=0x7f030000;
@@ -60,15 +58,20 @@ public final class R {
         public static final int button_leaderboard=0x7f050004;
         public static final int button_settings=0x7f050005;
         public static final int button_start=0x7f050003;
-        public static final int gameView=0x7f05000d;
+        public static final int gameView=0x7f050011;
         public static final int hello_world=0x7f050001;
-        public static final int soundOnOff=0x7f05000c;
-        public static final int text_University=0x7f05000a;
-        public static final int text_classNameSemester=0x7f05000b;
-        public static final int text_teamNames=0x7f050009;
+        public static final int name_Aditya=0x7f05000b;
+        public static final int name_Aman=0x7f05000a;
+        public static final int name_Jeremy=0x7f05000c;
+        public static final int name_Richard=0x7f050009;
+        public static final int soundOnOff=0x7f050010;
+        public static final int text_University=0x7f05000e;
+        public static final int text_classNameSemester=0x7f05000f;
+        public static final int text_title=0x7f05000d;
         public static final int title_activity_ghost_game=0x7f050006;
         public static final int title_activity_leaderboard=0x7f050007;
         public static final int title_activity_settings_menu=0x7f050008;
+        public static final int title_activity_splash_screen=0x7f050012;
     }
     public static final class style {
         /** 

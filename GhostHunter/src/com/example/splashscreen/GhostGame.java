@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 
@@ -270,6 +271,11 @@ public class GhostGame extends Activity implements OnClickListener {
 			
 			((GhostBoard)findViewById(R.id.the_canvas)).setSprite1Position(sprite1.x, sprite1.y);
 					
+			
+			++score;
+			
+			((TextView)findViewById(R.id.ScoreTotal)).setText(score/1000);
+			
 			frame.removeCallbacks(frameUpdate);
 			((GhostBoard) findViewById(R.id.the_canvas)).invalidate();
 			frame.postDelayed(frameUpdate, FRAME_RATE);

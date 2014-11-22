@@ -38,6 +38,12 @@
     tools:context="com.example.splashscreen.GhostGame" >
 
 
+    <TextView
+        android:id="@+id/ScoreTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
     <com.example.splashscreen.GhostBoard
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
