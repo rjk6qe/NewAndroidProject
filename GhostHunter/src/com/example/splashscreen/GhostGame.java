@@ -25,6 +25,7 @@ public class GhostGame extends Activity implements OnClickListener {
 	private Handler frame = new Handler();
 	
 	private Point sprite1velocity;
+	private Point sprite2velocity;
 	
 	private ViewSwitcher switcher;
 	private static final int refresh_screen = 1;
@@ -34,8 +35,8 @@ public class GhostGame extends Activity implements OnClickListener {
 	
 	private int sprite1maxofX;
 	private int sprite1maxofY;
-	//private int sprite2maxofX;
-	//private int sprite2maxofY;
+	private int sprite2maxofX;
+	private int sprite2maxofY;
 	
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_LEFT  = -1;
@@ -62,10 +63,10 @@ public class GhostGame extends Activity implements OnClickListener {
 		 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_ghost_game);
 		
-		switcher = (ViewSwitcher) findViewById(R.id.ViewSwitcher2);
+		//switcher = (ViewSwitcher) findViewById(R.id.ViewSwitcher2);
 
-		startScan();
 		
+		//startScan();
 		
 		Handler h = new Handler();
 
@@ -78,15 +79,16 @@ public class GhostGame extends Activity implements OnClickListener {
 		}, 1000);
 		
 	}
-	
+	/**
 	public void startScan() {
 		new Thread() {
 			public void run() {
 				try {
-					if(outside=true) {
-						Refresh.sendEmptyMessage(refresh_screen);
-					}
-				} catch(Exception e) {
+					Thread.sleep(1000);
+					Refresh.sendEmptyMessage(refresh_screen);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}.start();
@@ -94,18 +96,20 @@ public class GhostGame extends Activity implements OnClickListener {
 	}
 	
 	Handler Refresh = new Handler() {
+		TextView t = ((TextView) findViewById(R.id.ScoreTotal));
 			public void handleMessage(Message message) {
 				switch(message.what){
 				
 				case refresh_screen:
-						switcher.showNext();
+						++score;
+						t.setText(score + "");
 						break;	
 				default:
 						break;
 				}
 			}
 	};
-	
+	**/
 	
 	private Point getRandomVelocity() {
 		Random r = new Random();
@@ -137,34 +141,35 @@ public class GhostGame extends Activity implements OnClickListener {
 
 		
 		Point position1 = new Point(0,0);
-		//Point position2 = new Point(80,80);
 		
-		/**
-		while (Math.abs(position1.x - position2.x) < ((GhostBoard) findViewById(R.id.the_canvas))
-				.getSprite1Width()) {
-			position1 = getRandomPoint();
-			position2 = getRandomPoint();
-		}
-		**/
+		
+		//Ghost 1
+		Point position2 = getRandomPoint();
+		
+		((GhostBoard) findViewById(R.id.the_canvas)).setSprite1Position(
+				position2.x, position2.y);
+		
+		
 		((GhostBoard) findViewById(R.id.the_canvas)).setSprite1Position(
 				position1.x, position1.y);
-		/**
+		
 		((GhostBoard) findViewById(R.id.the_canvas)).setSprite2Position(
 				position2.x, position2.y);
-				**/
+				
 		sprite1maxofX = findViewById(R.id.the_canvas).getWidth() - 
 				((GhostBoard)findViewById(R.id.the_canvas)).getSprite1Width();
 		sprite1maxofY = findViewById(R.id.the_canvas).getHeight() - 
 				((GhostBoard)findViewById(R.id.the_canvas)).getSprite1Height();
-		/**
+		
 		 sprite2maxofX = findViewById(R.id.the_canvas).getWidth() - 
 		 
 				((GhostBoard)findViewById(R.id.the_canvas)).getSprite2Width();
 		sprite2maxofY = findViewById(R.id.the_canvas).getHeight() - 
 				((GhostBoard)findViewById(R.id.the_canvas)).getSprite2Height();
-		**/
+		
 		
 		sprite1velocity = new Point(0,1);
+		sprite2velocity = getRandomVelocity();
 		
 		frame.removeCallbacks(frameUpdate);
 		frame.postDelayed(frameUpdate, FRAME_RATE);
@@ -222,8 +227,15 @@ public class GhostGame extends Activity implements OnClickListener {
 			Point sprite1 = new Point (((GhostBoard)findViewById(R.id.the_canvas)).getSprite1XPos(),
 					((GhostBoard)findViewById(R.id.the_canvas)).getSprite1YPos()) ;
 			
+			Point sprite2 = new Point (((GhostBoard)findViewById(R.id.the_canvas)).getSprite2XPos(),
+					((GhostBoard)findViewById(R.id.the_canvas)).getSprite2YPos()) ;
+			
 			sprite1.x = sprite1.x + sprite1velocity.x;
 			sprite1.y = sprite1.y + sprite1velocity.y;
+			
+			sprite2.x = sprite2.x + sprite2velocity.x;
+			sprite2.y = sprite2.y + sprite2velocity.y;
+			
 			/**
 			if (sprite1.x > sprite1maxofX) {
 				sprite1velocity.x *= -1;
@@ -271,11 +283,8 @@ public class GhostGame extends Activity implements OnClickListener {
 			
 			((GhostBoard)findViewById(R.id.the_canvas)).setSprite1Position(sprite1.x, sprite1.y);
 					
-			/**
-			++score;
 			
-			((TextView)findViewById(R.id.ScoreTotal)).setText(score/1000);
-			**/
+			
 			frame.removeCallbacks(frameUpdate);
 			((GhostBoard) findViewById(R.id.the_canvas)).invalidate();
 			frame.postDelayed(frameUpdate, FRAME_RATE);

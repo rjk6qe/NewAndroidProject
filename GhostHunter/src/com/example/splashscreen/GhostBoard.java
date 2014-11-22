@@ -26,6 +26,7 @@ public class GhostBoard extends View {
     private boolean touched;
     
     public static Bitmap bm1 = null;
+    public static Bitmap bm2 = null;
     
     synchronized public void setSprite1Position(int x, int y){
     	sprite1=new Point(x,y);
@@ -46,7 +47,7 @@ public class GhostBoard extends View {
     public void setTouched(boolean touched) {
     	this.touched = touched;
     }
-    /**
+    
     synchronized public void setSprite2Position(int x, int y){
     	sprite2=new Point(x,y);
     }
@@ -56,21 +57,21 @@ public class GhostBoard extends View {
     synchronized public int getSprite2YPos(){
     	return sprite2.y;
     }
-    **/
+    
     synchronized public int getSprite1Width(){
     	return sprite1Boundary.width();
     }
     synchronized public int getSprite1Height(){
     	return sprite1Boundary.height();
     }
-    /**
+    
     synchronized public int getSprite2Width(){
     	return sprite2Boundary.width();
     }
     synchronized public int getSprite2Height(){
     	return sprite2Boundary.height();
     }
-    **/
+    
     
   
     
@@ -79,10 +80,15 @@ public class GhostBoard extends View {
 		
 		p = new Paint();
 		sprite1 = new Point(-1,-1);
+		sprite2 = new Point(-1,-1);
 	
 		p = new Paint();
 		bm1 = BitmapFactory.decodeResource(getResources(), R.drawable.obama);
 		sprite1Boundary = new Rect(0,0, 0, 0);
+		
+		p = new Paint();
+		bm2 = BitmapFactory.decodeResource(getResources(), R.drawable.ghost);
+		sprite2Boundary = new Rect(0,0,0,0);
 	
 	}
 
@@ -96,6 +102,9 @@ public class GhostBoard extends View {
 			canvas.drawBitmap(bm1, sprite1.x, sprite1.y, null);
 		}
 		
+		if (sprite2.x>=0 && sprite2.x <=((GhostBoard)findViewById(R.id.the_canvas)).getWidth()) {
+			canvas.drawBitmap(bm2, sprite2.x, sprite2.y, null);
+		}
 	}
 	
 
